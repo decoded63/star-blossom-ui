@@ -32,7 +32,9 @@ export function Header() {
         </nav>
 
         <a
-          href="#contact"
+          href="https://cal.com/shreynagar/devflow-media-1-1-session"
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold uppercase tracking-tight text-primary-foreground shadow-lg transition-all hover:scale-105 hover:shadow-primary/40"
         >
           Get a Free Audit
