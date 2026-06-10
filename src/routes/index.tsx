@@ -205,26 +205,51 @@ function Index() {
         </section>
 
         {/* Results */}
-        <section className="overflow-hidden bg-surface-subtle py-20" id="results">
-          <div className="container-max reveal">
-            <div className="mb-14 text-center">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Hard Evidence
-              </span>
-              <h2 className="text-3xl font-bold md:text-4xl">Distribution in Practice</h2>
-              <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-                Actual campaign performance metrics from active client engagements.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {statImgs.map((src, i) => (
-                <div key={i} className="card-hover overflow-hidden rounded-lg border border-border bg-card p-4 shadow-sm">
-                  <img alt={`Campaign performance metric ${i + 1}`} className="w-full" src={src} />
+        <section
+          className="overflow-hidden py-24"
+          id="results"
+          style={{ backgroundColor: "#F5F7FA" }}
+        >
+          <div className="container-max reveal mb-16 text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+              Hard Evidence
+            </span>
+            <h2 className="mt-4 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+              Distribution in Practice
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground">
+              Actual campaign performance metrics from active client engagements.
+            </p>
+          </div>
+
+          {/* Infinite marquee */}
+          <div className="marquee">
+            <div className="marquee-track gap-6 px-3">
+              {[...statImgs, ...statImgs].map((src, i) => (
+                <div
+                  key={i}
+                  className="shrink-0 overflow-hidden border bg-white p-4"
+                  style={{
+                    width: "clamp(300px, 80vw, 480px)",
+                    maxWidth: "480px",
+                    borderRadius: "16px",
+                    borderColor: "#E5E7EB",
+                    boxShadow: "0 8px 24px -12px rgba(15, 23, 42, 0.18)",
+                  }}
+                >
+                  <img
+                    alt={`Campaign performance metric ${(i % statImgs.length) + 1}`}
+                    className="h-auto w-full"
+                    style={{ objectFit: "contain", borderRadius: "10px" }}
+                    src={src}
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
           </div>
         </section>
+
 
         {/* Case Studies */}
         <section className="bg-background py-20" id="case-studies">
