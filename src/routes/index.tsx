@@ -86,7 +86,9 @@ function Index() {
               </p>
               <div className="flex flex-wrap items-center gap-6 pt-2">
                 <a
-                  href="#contact"
+                  href="https://cal.com/shreynagar/devflow-media-1-1-session"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-lg bg-primary px-8 py-4 font-display font-bold uppercase tracking-tight text-primary-foreground shadow-2xl transition-all hover:scale-105 hover:shadow-primary/40"
                 >
                   Get a Free Audit
@@ -307,7 +309,9 @@ function Index() {
             </p>
             <div className="flex flex-col justify-center gap-4 pt-2 md:flex-row">
               <a
-                href="#contact"
+                href="https://cal.com/shreynagar/devflow-media-1-1-session"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-lg bg-primary px-8 py-4 font-display font-bold uppercase tracking-tight text-primary-foreground shadow-2xl transition-all hover:scale-105"
               >
                 Get a Free Audit
