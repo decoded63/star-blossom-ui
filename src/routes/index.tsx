@@ -39,7 +39,7 @@ const statImgs = [
 const caseStudies = [
   {
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUnyhQ4gDHHDgWi486iEzENRosislnQvlnvkdurMaxuXsepb8l6l_xnBgwFKIWGRrV1J6w1Np6AJ0ka9peyneg15Hf1Qa11n6oOM4-tMb2yoh9hZ5mUCuIIQfjpCAG-VRcDUKgSGfAVF8DBiLpghZD-cm5Nw32w8FOFb3aKsM2VOQ3bok7THg52UoZaVIVG-qX_sjkHoSKoRrU3RP-0Fny1Q2JWtFSJ0aa5gMg2nGvNbSEygj4MYsneDmmpRmnO8aHq1sutVSqpm4",
-    title: "Example 1: Breaking Out of Referral Dependency",
+    title: "Case Study 1: Breaking Out of Referral Dependency",
     desc: "How a 12-person software shop built an outbound motion that added $60k MRR in 4 months.",
     stats: [
       { value: "$60k", label: "Added MRR" },
@@ -48,7 +48,7 @@ const caseStudies = [
   },
   {
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAKzN7P7QUOFd1IvIlMsJV1Z82K70_3Q4MplcYXSqnNjtocvDHm9_YRcKzXsn5UMsEwjwvtIawe4Nqbs0JW-V70PVoF2c-DFwgs3A8LYXQzkZLXe8AYgMcEM9OCN1sC1k3gxLfJ4JLhSVdQiEGybowQMaD5C366pr3rKa-0L6mU_YMagvzq6xCRk8rFgcLH1NfjIAREhMIH3dv3O1VVi94fj37iSq9dgNzprS2Yw-9RIagbvMpOKL_wk6L7HvtaWdBsiTlNx5njB0U",
-    title: "Example 2: Breaking Into Enterprise",
+    title: "Case Study 2: Breaking Into Enterprise",
     desc: "Targeting Fortune 500 decision-makers with a custom-engineered technical proof of concept.",
     stats: [
       { value: "$350k", label: "Contract Value" },
@@ -137,8 +137,8 @@ function Index() {
                 The Hard Truth
               </span>
               <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-                Your Referrals Have a Ceiling.
-                <span className="mt-2 block text-primary">Break Through It.</span>
+                Your Referrals Have a Ceiling
+                <span className="mt-2 block text-primary">Break Through It</span>
               </h1>
               <p className="max-w-xl text-lg font-medium text-ink-foreground/70">
                 DevFlow Media is the revenue partner for IT companies ready to
@@ -152,7 +152,7 @@ function Index() {
                   rel="noopener noreferrer"
                   className="rounded-lg bg-primary px-8 py-4 font-display font-bold uppercase tracking-tight text-primary-foreground shadow-2xl transition-all hover:scale-105 hover:shadow-primary/40"
                 >
-                  Get a Free Audit
+                  BOOK A CALL
                 </a>
                 <div className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
@@ -180,7 +180,7 @@ function Index() {
         <section className="border-b border-border bg-background py-20">
           <div className="container-max max-w-4xl space-y-6 text-center reveal">
             <h2 className="text-3xl font-bold md:text-4xl">
-              Referral Dependency vs. The Growth Engine
+              Referral Dependency vs The Growth Engine
             </h2>
             <div className="mx-auto h-1 w-20 bg-primary" />
             <p className="text-lg leading-relaxed text-muted-foreground">
@@ -362,7 +362,7 @@ function Index() {
         <section className="relative bg-ink py-24 text-ink-foreground">
           <div className="container-max max-w-4xl space-y-8 text-center reveal">
             <h2 className="text-3xl font-bold md:text-5xl">
-              Growth shouldn't depend on luck. Build your engine today.
+              Growth shouldn't depend on luck Build your engine today
             </h2>
             <p className="text-lg font-medium text-ink-foreground/70">
               Join the IT leaders who have stopped waiting for the phone to ring
@@ -375,7 +375,7 @@ function Index() {
                 rel="noopener noreferrer"
                 className="rounded-lg bg-primary px-8 py-4 font-display font-bold uppercase tracking-tight text-primary-foreground shadow-2xl transition-all hover:scale-105"
               >
-                Get a Free Audit
+                BOOK A CALL
               </a>
               <a
                 href="#results"

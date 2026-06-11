@@ -39,13 +39,13 @@ export function Footer() {
             rel="noopener noreferrer"
             className="inline-block rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold uppercase tracking-tight text-primary-foreground transition-all hover:scale-105"
           >
-            Book a Free Audit
+            BOOK A CALL
           </a>
         </div>
       </div>
       <div className="border-t border-ink-foreground/10">
         <div className="container-max flex flex-col items-center justify-between gap-2 py-6 text-xs text-ink-foreground/50 md:flex-row">
-          <span>© {new Date().getFullYear()} DevFlow Media. All rights reserved.</span>
+          <span>© 2024 DevFlow Media. All rights reserved.</span>
           <span>Predictable enterprise growth, engineered.</span>
         </div>
       </div>
