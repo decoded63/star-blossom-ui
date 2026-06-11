@@ -89,7 +89,7 @@ function Index() {
                     backgroundColor: isGlow
                       ? "oklch(0.66 0.2 38)"
                       : "oklch(0.97 0.008 250)",
-                    opacity,
+                    "--particle-opacity": opacity,
                     boxShadow: isGlow
                       ? `0 0 ${size * 4}px ${size}px oklch(0.66 0.2 38 / 0.35)`
                       : `0 0 ${size * 2}px ${size / 2}px oklch(0.97 0.008 250 / 0.2)`,
