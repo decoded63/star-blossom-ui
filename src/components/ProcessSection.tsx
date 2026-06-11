@@ -1,4 +1,4 @@
-import { useEffect, useРef, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Metric = { value: number; suffix?: string; prefix?: string; label: string; static?: string };
 
