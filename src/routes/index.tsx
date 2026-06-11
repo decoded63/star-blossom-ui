@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { ProcessSection } from "@/components/ProcessSection";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -241,31 +242,7 @@ function Index() {
         </section>
 
         {/* Process */}
-        <section className="bg-background py-20" id="process">
-          <div className="container-max">
-            <h2 className="mb-14 text-center text-3xl font-bold md:text-4xl reveal">
-              How the Process Works
-            </h2>
-            <div className="grid gap-6 md:grid-cols-4 reveal">
-              {[
-                { n: "01", k: "Selection", v: "Identify Right Companies" },
-                { n: "02", k: "Strategy", v: "Build Specific Offer" },
-                { n: "03", k: "Engagement", v: "Reach Decision-Makers Directly" },
-                { n: "04", k: "Retention", v: "Build Repeatable Pipeline" },
-              ].map((s) => (
-                <div key={s.n} className="card-hover relative rounded-lg border border-border bg-card p-8">
-                  <span className="absolute -left-3 -top-3 grid h-10 w-10 place-items-center rounded-md bg-ink font-display font-bold text-ink-foreground">
-                    {s.n}
-                  </span>
-                  <h4 className="mb-1 text-xs font-bold uppercase tracking-widest text-primary">
-                    {s.k}
-                  </h4>
-                  <p className="font-semibold">{s.v}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProcessSection />
 
         {/* Results */}
         <section
