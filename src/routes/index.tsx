@@ -66,9 +66,70 @@ function Index() {
       <main className="flex-1">
         {/* Hero */}
         <section className="relative overflow-hidden bg-ink py-20 text-ink-foreground md:py-32">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -left-32 top-0 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
-            <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+          {/* Animated particle constellation */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {/* Orbiting particles */}
+            {[...Array(18)].map((_, i) => {
+              const size = 2 + (i % 5) * 1.5;
+              const delay = i * -2.1;
+              const duration = 16 + (i % 7) * 3;
+              const tx = 10 + (i % 4) * 22;
+              const ty = 12 + (i % 3) * 26;
+              const opacity = 0.15 + (i % 6) * 0.08;
+              const isGlow = i % 3 === 0;
+              return (
+                <span
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    width: size,
+                    height: size,
+                    left: `${20 + (i * 137) % 60}%`,
+                    top: `${15 + (i * 89) % 55}%`,
+                    backgroundColor: isGlow
+                      ? "oklch(0.66 0.2 38)"
+                      : "oklch(0.97 0.008 250)",
+                    opacity,
+                    boxShadow: isGlow
+                      ? `0 0 ${size * 4}px ${size}px oklch(0.66 0.2 38 / 0.35)`
+                      : `0 0 ${size * 2}px ${size / 2}px oklch(0.97 0.008 250 / 0.2)`,
+                    animation: `particle-orbit ${duration}s ease-in-out ${delay}s infinite`,
+                  }}
+                />
+              );
+            })}
+            {/* Slow drifting nebula blobs */}
+            <div
+              className="absolute -left-32 top-0 h-96 w-96 rounded-full blur-3xl"
+              style={{
+                background: "oklch(0.66 0.2 38 / 0.15)",
+                animation: "nebula-drift 20s ease-in-out infinite alternate",
+              }}
+            />
+            <div
+              className="absolute -right-24 bottom-0 h-80 w-80 rounded-full blur-3xl"
+              style={{
+                background: "oklch(0.66 0.2 38 / 0.08)",
+                animation: "nebula-drift 24s ease-in-out 3s infinite alternate-reverse",
+              }}
+            />
+            <div
+              className="absolute left-1/3 top-1/2 h-64 w-64 rounded-full blur-3xl"
+              style={{
+                background: "oklch(0.5 0.15 250 / 0.12)",
+                animation: "nebula-drift 18s ease-in-out 1.5s infinite alternate",
+              }}
+            />
+            {/* Subtle grid lines */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(oklch(0.97 0.008 250 / 0.3) 1px, transparent 1px), linear-gradient(90deg, oklch(0.97 0.008 250 / 0.3) 1px, transparent 1px)",
+                backgroundSize: "80px 80px",
+                animation: "grid-pan 30s linear infinite",
+              }}
+            />
           </div>
           <div className="container-max relative z-10 grid items-center gap-12 md:grid-cols-2">
             <div className="space-y-6">
