@@ -250,7 +250,6 @@ export function ProcessSection() {
                 transition={SPRING}
                 initial={false}
               >
-                <div style={{ flexBasis: 0, position: "absolute" }} />
 
                 <motion.div
                   className="absolute inset-0 rounded-3xl"
