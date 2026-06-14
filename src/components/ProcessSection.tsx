@@ -233,7 +233,7 @@ export function ProcessSection() {
         {/* Desktop: expanding horizontal panels */}
         <div
           className="hidden gap-3 md:flex"
-          style={{ height: "560px" }}
+          style={{ height: "420px" }}
         >
           {stages.map((stage, i) => {
             const isActive = active === i;
