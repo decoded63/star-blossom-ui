@@ -252,7 +252,11 @@ export function ProcessSection() {
                 cursor: "pointer",
                 willChange: "transform",
               }}
-              whileHover={{ scale: 1.06 }}
+              whileHover={{
+                scale: 1.06,
+                boxShadow:
+                  "0 0 0 1px rgba(255,90,31,0.25), 0 10px 40px rgba(255,90,31,0.12)",
+              }}
               transition={{ duration: 1.0, ease: EASE }}
             >
               <span
