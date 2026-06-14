@@ -249,10 +249,9 @@ export function ProcessSection() {
                 }}
                 transition={SPRING}
                 initial={false}
-                {...{
-                  // flexBasis stays 0 so flexGrow drives width
-                }}
               >
+                <div style={{ flexBasis: 0, position: "absolute" }} />
+
                 <motion.div
                   className="absolute inset-0 rounded-3xl"
                   animate={{
