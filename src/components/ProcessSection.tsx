@@ -5,9 +5,8 @@ type Metric = { value: string; label: string };
 
 type Stage = {
   n: string;
-  eyebrow: string;
+  label: string;
   title: string;
-  teaser: string;
   subheading: string;
   description: string;
   bullets: string[];
@@ -17,18 +16,17 @@ type Stage = {
 const stages: Stage[] = [
   {
     n: "01",
-    eyebrow: "Selection",
+    label: "Target",
     title: "Identify Right Companies",
-    teaser: "Pinpoint the software companies most likely to buy.",
-    subheading: "Outbound success starts long before the first email is sent.",
+    subheading: "Outbound success starts before the first email.",
     description:
-      "We analyze thousands of software companies using firmographic data, hiring signals, funding activity, technology stack, and buyer intent signals to identify businesses most likely to purchase your services.",
+      "We analyze software companies using firmographic data, hiring signals, funding activity, technology stack, and buyer intent indicators to identify businesses most likely to buy your services.",
     bullets: [
       "ICP Development",
       "Market Segmentation",
-      "Technology Stack Filtering",
+      "Tech Stack Filtering",
       "Intent Signal Analysis",
-      "Decision-Maker Discovery",
+      "Buyer Discovery",
     ],
     metrics: [
       { value: "10K+", label: "Companies Analyzed" },
@@ -38,54 +36,51 @@ const stages: Stage[] = [
   },
   {
     n: "02",
-    eyebrow: "Strategy",
+    label: "Offer",
     title: "Build Specific Offer",
-    teaser: "Craft irresistible offers your ideal clients actually respond to.",
     subheading: "Generic offers kill response rates.",
     description:
-      "We engineer highly specific service positioning around what prospects already need, making outreach feel relevant instead of promotional.",
+      "We engineer highly specific offers aligned with real buyer pain points, making outreach feel relevant instead of promotional.",
     bullets: [
       "Offer Positioning",
-      "Pain Point Mapping",
+      "Pain Mapping",
       "Messaging Strategy",
       "Value Proposition Design",
       "Offer Testing",
     ],
     metrics: [
       { value: "4x", label: "Higher Replies" },
-      { value: "62%", label: "Better Open Rate" },
-      { value: "30+", label: "Offer Variants Tested" },
+      { value: "62%", label: "Better Opens" },
+      { value: "30+", label: "Offer Variants" },
     ],
   },
   {
     n: "03",
-    eyebrow: "Engagement",
-    title: "Reach Decision-Makers Directly",
-    teaser: "Get in front of founders, CTOs, and buyers instantly.",
-    subheading: "Skip gatekeepers. Reach buyers.",
+    label: "Reach",
+    title: "Reach Decision Makers Directly",
+    subheading: "Skip gatekeepers.",
     description:
-      "We build targeted outbound systems that connect your message directly to CEOs, CTOs, founders, and decision-makers.",
+      "We build outbound systems that connect you directly with CEOs, founders, CTOs, and decision-makers.",
     bullets: [
       "Email Infrastructure",
       "Lead Enrichment",
-      "Hyper-Personalization",
+      "Hyper Personalization",
       "Sequence Automation",
       "Inbox Optimization",
     ],
     metrics: [
-      { value: "95%", label: "Inbox Delivery" },
+      { value: "95%", label: "Deliverability" },
       { value: "50K+", label: "Emails Sent" },
       { value: "2.8x", label: "Reply Rate" },
     ],
   },
   {
     n: "04",
-    eyebrow: "Retention",
+    label: "Scale",
     title: "Build Repeatable Pipeline",
-    teaser: "Turn outbound into a predictable revenue engine.",
     subheading: "Revenue should be predictable.",
     description:
-      "We transform outbound into a scalable acquisition machine that continuously fills your pipeline with qualified opportunities.",
+      "We turn outbound into a scalable acquisition machine that continuously fills your pipeline with qualified opportunities.",
     bullets: [
       "Meeting Booking",
       "Sales Handoff",
@@ -101,120 +96,120 @@ const stages: Stage[] = [
   },
 ];
 
-const SPRING = { type: "spring" as const, stiffness: 170, damping: 26, mass: 0.9 };
+const EASE = [0.22, 1, 0.36, 1] as const;
 
-function ExpandedContent({ stage }: { stage: Stage }) {
+function ExpandedPanel({
+  stage,
+  onClose,
+}: {
+  stage: Stage;
+  onClose: () => void;
+}) {
   return (
     <motion.div
-      className="flex h-full flex-col justify-center gap-6 p-8 md:p-12"
-      initial="hidden"
-      animate="show"
-      variants={{
-        hidden: {},
-        show: { transition: { staggerChildren: 0.06, delayChildren: 0.12 } },
+      className="fixed inset-0 z-[9999] overflow-y-auto"
+      style={{
+        background:
+          "radial-gradient(circle at center, rgba(20,35,80,0.97), rgba(4,10,24,0.99))",
+        backdropFilter: "blur(20px)",
+        willChange: "opacity",
       }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      onMouseLeave={onClose}
     >
-      <motion.span
-        variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-        className="font-mono text-sm font-bold tracking-[0.3em] text-primary"
+      {/* morphing node */}
+      <motion.div
+        layoutId={`node-${stage.n}`}
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 30% 10%, rgba(255,90,31,0.10), transparent 55%)",
+          willChange: "transform",
+        }}
+        transition={{ duration: 1.0, ease: EASE }}
+      />
+
+      <motion.div
+        className="relative mx-auto flex min-h-screen w-full max-w-[1400px] flex-col items-center justify-center gap-12 px-6 py-20 md:flex-row md:items-center md:justify-between md:gap-20 md:px-20"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
       >
-        {stage.n} — {stage.eyebrow}
-      </motion.span>
-
-      <div>
-        <motion.h3
-          variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
-          className="text-3xl font-bold text-white md:text-4xl"
-        >
-          {stage.title}
-        </motion.h3>
-        <motion.p
-          variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-          className="mt-3 text-lg font-semibold text-primary"
-        >
-          {stage.subheading}
-        </motion.p>
-        <motion.p
-          variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
-          className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70 md:text-base"
-        >
-          {stage.description}
-        </motion.p>
-      </div>
-
-      <div className="mt-2 grid gap-8 md:grid-cols-2">
-        <div>
-          <motion.h4
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-white/40"
+        {/* left column */}
+        <div className="flex-1">
+          <span className="font-mono text-sm font-bold tracking-[0.3em] text-primary">
+            {stage.n} — {stage.label}
+          </span>
+          <h3
+            className="mt-4 font-bold leading-[1.05] text-white"
+            style={{ fontSize: "clamp(42px, 5vw, 90px)" }}
           >
+            {stage.title}
+          </h3>
+          <p
+            className="mt-5 font-semibold text-primary"
+            style={{ fontSize: "24px" }}
+          >
+            {stage.subheading}
+          </p>
+          <p
+            className="mt-5 max-w-2xl"
+            style={{
+              fontSize: "20px",
+              lineHeight: 1.8,
+              color: "rgba(255,255,255,0.75)",
+            }}
+          >
+            {stage.description}
+          </p>
+
+          <h4 className="mt-8 text-xs font-bold uppercase tracking-[0.25em] text-white/40">
             What We Do
-          </motion.h4>
-          <ul className="space-y-2.5">
+          </h4>
+          <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
             {stage.bullets.map((b) => (
-              <motion.li
+              <li
                 key={b}
-                variants={{ hidden: { opacity: 0, x: -14 }, show: { opacity: 1, x: 0 } }}
-                className="flex items-center gap-3 text-sm text-white/85 md:text-base"
+                className="flex items-center gap-3 text-base text-white/85"
               >
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/15 text-xs text-primary">
                   ✓
                 </span>
                 {b}
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
-        <div>
-          <motion.h4
-            variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-            className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-white/40"
-          >
-            Metrics
-          </motion.h4>
-          <div className="space-y-5">
-            {stage.metrics.map((m) => (
-              <motion.div
-                key={m.label}
-                variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+
+        {/* right column metrics */}
+        <div className="flex flex-1 flex-col gap-10 md:items-end">
+          {stage.metrics.map((m) => (
+            <div key={m.label} className="md:text-right">
+              <div
+                className="font-extrabold leading-none text-primary"
+                style={{ fontSize: "clamp(56px, 7vw, 140px)" }}
               >
-                <div className="font-mono text-3xl font-bold text-primary md:text-4xl">
-                  {m.value}
-                </div>
-                <div className="mt-1 text-xs uppercase tracking-widest text-white/50">
-                  {m.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                {m.value}
+              </div>
+              <div
+                className="mt-2 uppercase text-white"
+                style={{ fontSize: "18px", letterSpacing: "4px", opacity: 0.65 }}
+              >
+                {m.label}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
 
-function CollapsedContent({ stage }: { stage: Stage }) {
-  return (
-    <div className="flex h-full flex-col justify-between p-6">
-      <span className="font-mono text-sm font-bold tracking-[0.3em] text-primary">
-        {stage.n}
-      </span>
-      <div className="flex flex-col items-center gap-6">
-        <p className="max-w-[110px] text-center text-xs leading-relaxed text-foreground/55">
-          {stage.teaser}
-        </p>
-        <div className="[writing-mode:vertical-rl] rotate-180">
-          <span className="block text-lg font-bold text-foreground">
-            {stage.title}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function ProcessSection() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
 
   return (
     <section className="bg-background py-20 md:py-28" id="process">
@@ -223,149 +218,77 @@ export function ProcessSection() {
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
             The Operating System
           </span>
-          <h2 className="mt-3 text-3xl font-bold md:text-5xl">How the Process Works</h2>
+          <h2 className="mt-3 text-3xl font-bold md:text-5xl">
+            How the Process Works
+          </h2>
           <p className="mt-4 text-muted-foreground">
-            Each card is a stage of DevFlow Media's outbound operating system. Hover any
-            stage to explore how we engineer predictable pipeline.
+            Four control nodes. Hover any one to expand a stage of DevFlow
+            Media's outbound operating system into a full strategic view.
           </p>
         </div>
 
-        {/* Desktop: expanding horizontal panels */}
+        {/* tiny square control nodes */}
         <div
-          className="hidden gap-3 md:flex"
-          style={{ height: "420px" }}
+          className="flex items-center justify-center"
+          style={{ gap: "20px" }}
         >
-          {stages.map((stage, i) => {
-            const isActive = active === i;
-            return (
-              <motion.div
-                key={stage.n}
-                onMouseEnter={() => setActive(i)}
-                className="relative cursor-pointer overflow-hidden rounded-3xl border"
-                style={{ willChange: "flex-grow, transform", flexBasis: 0, minWidth: 0 }}
-                animate={{
-                  flexGrow: isActive ? 76 : 8,
-                  scale: isActive ? 1 : 0.985,
-                }}
-                transition={SPRING}
-                initial={false}
-              >
-
-                <motion.div
-                  className="absolute inset-0 rounded-3xl"
-                  animate={{
-                    backgroundColor: isActive ? "#081A36" : "var(--color-card)",
-                    boxShadow: isActive
-                      ? "0 30px 80px -30px rgba(255,90,31,0.5), inset 0 0 0 1px rgba(255,90,31,0.35)"
-                      : "inset 0 0 0 1px var(--color-border)",
-                  }}
-                  transition={{ duration: 0.4 }}
-                />
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-3xl"
-                  style={{
-                    opacity: isActive ? 1 : 0,
-                    transition: "opacity 0.4s ease",
-                    background:
-                      "radial-gradient(circle at 30% 15%, rgba(255,90,31,0.2), transparent 60%)",
-                  }}
-                />
-                <div className="relative h-full" style={{ flexBasis: 0 }}>
-                  <AnimatePresence mode="wait">
-                    {isActive ? (
-                      <motion.div
-                        key="expanded"
-                        className="h-full"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                      >
-                        <ExpandedContent stage={stage} />
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="collapsed"
-                        className="h-full"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <CollapsedContent stage={stage} />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Mobile: stacked accordion */}
-        <div className="space-y-3 md:hidden">
-          {stages.map((stage, i) => {
-            const isActive = active === i;
-            return (
-              <div
-                key={stage.n}
-                className="overflow-hidden rounded-3xl border"
+          {stages.map((stage, i) => (
+            <motion.button
+              key={stage.n}
+              type="button"
+              layoutId={`node-${stage.n}`}
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              className="group flex flex-col items-center justify-center"
+              style={{
+                width: "75.6px",
+                height: "75.6px",
+                minWidth: "75.6px",
+                minHeight: "75.6px",
+                borderRadius: "18px",
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                backdropFilter: "blur(12px)",
+                cursor: "pointer",
+                willChange: "transform",
+              }}
+              whileHover={{
+                scale: 1.06,
+                boxShadow:
+                  "0 0 0 1px rgba(255,90,31,0.25), 0 10px 40px rgba(255,90,31,0.12)",
+              }}
+              transition={{ duration: 1.0, ease: EASE }}
+            >
+              <span
+                className="leading-none"
                 style={{
-                  backgroundColor: isActive ? "#081A36" : "var(--color-card)",
-                  borderColor: isActive ? "var(--color-primary)" : "var(--color-border)",
-                  boxShadow: isActive
-                    ? "0 20px 50px -25px rgba(255,90,31,0.45)"
-                    : "none",
-                  transition: "all 0.4s ease",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "#ff5a1f",
                 }}
               >
-                <button
-                  type="button"
-                  onClick={() => setActive(isActive ? -1 : i)}
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left"
-                >
-                  <span className="flex items-center gap-3">
-                    <span className="font-mono text-sm font-bold tracking-[0.2em] text-primary">
-                      {stage.n}
-                    </span>
-                    <span>
-                      <span className="block text-[0.6rem] font-bold uppercase tracking-[0.3em] text-primary/70">
-                        {stage.eyebrow}
-                      </span>
-                      <span
-                        className="block text-base font-bold"
-                        style={{ color: isActive ? "#fff" : "var(--color-foreground)" }}
-                      >
-                        {stage.title}
-                      </span>
-                    </span>
-                  </span>
-                  <span
-                    className="text-primary"
-                    style={{
-                      transition: "transform 0.4s ease",
-                      transform: isActive ? "rotate(45deg)" : "rotate(0)",
-                    }}
-                  >
-                    +
-                  </span>
-                </button>
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateRows: isActive ? "1fr" : "0fr",
-                    transition: "grid-template-rows 0.4s ease",
-                  }}
-                >
-                  <div className="overflow-hidden">
-                    <ExpandedContent stage={stage} />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                {stage.n}
+              </span>
+              <span
+                className="mt-1.5 leading-none text-white"
+                style={{ fontSize: "13px", fontWeight: 600 }}
+              >
+                {stage.label}
+              </span>
+            </motion.button>
+          ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {active !== null && (
+          <ExpandedPanel
+            key={stages[active].n}
+            stage={stages[active]}
+            onClose={() => setActive(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
