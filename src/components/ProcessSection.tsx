@@ -242,7 +242,7 @@ export function ProcessSection() {
                 key={stage.n}
                 onMouseEnter={() => setActive(i)}
                 className="relative cursor-pointer overflow-hidden rounded-3xl border"
-                style={{ willChange: "flex-grow, transform" }}
+                style={{ willChange: "flex-grow, transform", flexBasis: 0, minWidth: 0 }}
                 animate={{
                   flexGrow: isActive ? 76 : 8,
                   scale: isActive ? 1 : 0.985,
