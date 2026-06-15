@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProcessSection } from "@/components/ProcessSection";
+import { VideoSection } from "@/components/VideoSection";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -176,6 +177,9 @@ function Index() {
             </div>
           </div>
         </section>
+
+        {/* Video */}
+        <VideoSection />
 
         {/* Problem */}
         <section className="border-b border-border bg-background py-20">
