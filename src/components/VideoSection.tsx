@@ -80,7 +80,7 @@ export function VideoSection() {
         {/* Entrance + premium frame */}
         <div
           ref={ref}
-          className="mx-auto max-w-4xl"
+          className="mx-auto max-w-md"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0) scale(1)" : "translateY(32px) scale(0.92)",
@@ -133,10 +133,10 @@ export function VideoSection() {
                 }}
               >
                 {/* video container */}
-                <div className="relative overflow-hidden rounded-[18px]" style={{ paddingTop: "56.25%" }}>
+                <div className="relative overflow-hidden rounded-[18px]" style={{ paddingTop: "177.78%" }}>
                   <iframe
                     title="DevFlow Media — Growth Engine"
-                    src="https://player.vimeo.com/video/76979871?title=0&byline=0&portrait=0"
+                    src="https://player.vimeo.com/video/1201225764?title=0&byline=0&portrait=0"
                     className="absolute inset-0 h-full w-full rounded-[18px]"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
