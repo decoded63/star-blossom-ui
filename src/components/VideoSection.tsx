@@ -80,7 +80,7 @@ export function VideoSection() {
         {/* Entrance + premium frame */}
         <div
           ref={ref}
-          className="mx-auto max-w-4xl"
+          className="mx-auto max-w-md"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0) scale(1)" : "translateY(32px) scale(0.92)",
