@@ -178,6 +178,9 @@ function Index() {
           </div>
         </section>
 
+        {/* Video */}
+        <VideoSection />
+
         {/* Problem */}
         <section className="border-b border-border bg-background py-20">
           <div className="container-max max-w-4xl space-y-6 text-center reveal">
