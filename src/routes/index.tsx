@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProcessSection } from "@/components/ProcessSection";
 import { VideoSection } from "@/components/VideoSection";
+import DFMHero from "@/components/hero/DFMHero";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
