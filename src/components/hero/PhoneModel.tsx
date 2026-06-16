@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export default function PhoneModel() {
-  const ref = useRef();
+  const ref = useRef<any>(null);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;

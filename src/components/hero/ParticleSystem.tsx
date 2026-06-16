@@ -2,7 +2,7 @@ import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export default function ParticleSystem() {
-  const ref = useRef();
+  const ref = useRef<any>(null);
 
   const particles = useMemo(() => {
     const arr = new Float32Array(300 * 3);
