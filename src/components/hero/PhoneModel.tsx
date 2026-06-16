@@ -1,33 +1,35 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
+import iphoneAsset from "../../assets/iphone17promax.glb.asset.json";
 
 export default function PhoneModel() {
-  const ref = useRef<any>(null);
+  const groupRef = useRef<THREE.Group>(null);
+  const { scene } = useGLTF(iphoneAsset.url);
+
+  // Clone scene so we can modify it without affecting cached original
+  const model = useRef<THREE.Group>(scene.clone());
+
+  useEffect(() => {
+    if (!model.current) return;
+    model.current.traverse((child: any) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  }, []);
 
   useFrame(({ clock }) => {
-    if (!ref.current) return;
-    ref.current.rotation.y = Math.sin(clock.elapsedTime * 0.6) * 0.2;
-    ref.current.rotation.x = Math.cos(clock.elapsedTime * 0.5) * 0.03;
-    ref.current.position.y = Math.sin(clock.elapsedTime * 0.8) * 0.08;
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.6) * 0.2;
+    groupRef.current.rotation.x = Math.cos(clock.elapsedTime * 0.5) * 0.03;
+    groupRef.current.position.y = Math.sin(clock.elapsedTime * 0.8) * 0.08;
   });
 
   return (
-    <group ref={ref}>
-      {/* Body */}
-      <mesh castShadow>
-        <boxGeometry args={[2, 4, 0.15]} />
-        <meshStandardMaterial metalness={1} roughness={0.15} color="#111" />
-      </mesh>
-
-      {/* Screen */}
-      <mesh position={[0, 0, 0.085]}>
-        <planeGeometry args={[1.85, 3.8]} />
-        <meshStandardMaterial
-          emissive="#2563eb"
-          emissiveIntensity={0.5}
-          color="#050816"
-        />
-      </mesh>
+    <group ref={groupRef} scale={15} position={[0, -0.5, 0]} rotation={[0, Math.PI, 0]}>
+      <primitive object={model.current} />
     </group>
   );
 }
