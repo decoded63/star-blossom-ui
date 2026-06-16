@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ProcessSection } from "@/components/ProcessSection";
 import { VideoSection } from "@/components/VideoSection";
+import DFMHero from "@/components/hero/DFMHero";
 import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
@@ -67,6 +68,8 @@ function Index() {
       <Header />
       <main className="flex-1">
         {/* Hero */}
+        <DFMHero />
+        {false && (
         <section className="relative overflow-hidden bg-ink py-20 text-ink-foreground md:py-32">
           {/* Animated particle constellation */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -177,6 +180,7 @@ function Index() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Video */}
         <VideoSection />
