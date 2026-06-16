@@ -1,14 +1,15 @@
 import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import type { Group, Object3D } from "three";
 import iphoneAsset from "../../assets/iphone17promax.glb.asset.json";
 
 export default function PhoneModel() {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef<Group>(null);
   const { scene } = useGLTF(iphoneAsset.url);
 
   // Clone scene so we can modify it without affecting cached original
-  const model = useRef<THREE.Group>(scene.clone());
+  const model = useRef<Object3D>(scene.clone());
 
   useEffect(() => {
     if (!model.current) return;
