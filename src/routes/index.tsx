@@ -179,6 +179,7 @@ function Index() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Video */}
         <VideoSection />
