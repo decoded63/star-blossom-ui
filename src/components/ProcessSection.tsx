@@ -112,13 +112,13 @@ function ExpandedPanel({
         background:
           "radial-gradient(circle at center, rgba(20,35,80,0.97), rgba(4,10,24,0.99))",
         backdropFilter: "blur(20px)",
+        pointerEvents: "none",
         willChange: "opacity",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
-      onMouseLeave={onClose}
     >
       {/* morphing node */}
       <motion.div
@@ -132,8 +132,30 @@ function ExpandedPanel({
         transition={{ duration: 1.0, ease: EASE }}
       />
 
+      {/* close button */}
+      <button
+        type="button"
+        onClick={onClose}
+        className="fixed right-6 top-6 z-[10000] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/80 backdrop-blur-md transition-colors hover:bg-white/[0.12] hover:text-white"
+        style={{ pointerEvents: "auto" }}
+        aria-label="Close"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
+          <path d="M3 3l10 10M13 3L3 13" />
+        </svg>
+      </button>
+
       <motion.div
         className="relative mx-auto flex min-h-screen w-full max-w-[1400px] flex-col items-center justify-center gap-12 px-6 py-20 md:flex-row md:items-center md:justify-between md:gap-20 md:px-20"
+        style={{ pointerEvents: "auto" }}
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
@@ -223,7 +245,7 @@ export function ProcessSection() {
           </h2>
           <p className="mt-4 text-muted-foreground">
             Four control nodes. Hover any one to expand a stage of DevFlow
-            Media's outbound operating system into a full strategic view.
+            Media&apos;s outbound operating system into a full strategic view.
           </p>
         </div>
 
