@@ -251,9 +251,8 @@ export function ProcessSection() {
 
         {/* tiny square control nodes */}
         <div
-          className="relative flex items-center justify-center"
-          style={{ gap: "20px", zIndex: 10001 }}
-          onMouseLeave={() => setActive(null)}
+          className="flex items-center justify-center"
+          style={{ gap: "20px" }}
         >
           {stages.map((stage, i) => (
             <motion.button
