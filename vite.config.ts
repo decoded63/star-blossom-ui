@@ -1,15 +1,18 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
+// @lovable.dev/vite-tanstack-config already includes the required TanStack Start,
+// React, Tailwind, tsconfig paths, route generation, and Nitro build plugins.
+// Keep deployment-specific Nitro options here so Netlify and local builds create
+// the same serverless output shape.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
+    // nitro/vite builds from this entry for the Netlify Function handler.
     server: { entry: "server" },
+  },
+  nitro: {
+    // Netlify's build environment can auto-detect Nitro, but pinning the preset
+    // keeps CI, local builds, and Netlify deployments deterministic.
+    preset: "netlify",
   },
 });

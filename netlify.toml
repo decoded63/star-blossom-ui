@@ -1,0 +1,18 @@
+[build]
+  command = "bun run build:netlify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  BUN_VERSION = "1.2.20"
+
+[dev]
+  command = "bun run dev"
+  targetPort = 5173
+  port = 8888
+  publish = "dist"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

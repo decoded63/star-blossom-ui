@@ -86,11 +86,9 @@ function Index() {
                   style={{
                     width: size,
                     height: size,
-                    left: `${20 + (i * 137) % 60}%`,
-                    top: `${15 + (i * 89) % 55}%`,
-                    backgroundColor: isGlow
-                      ? "oklch(0.66 0.2 38)"
-                      : "oklch(0.97 0.008 250)",
+                    left: `${20 + ((i * 137) % 60)}%`,
+                    top: `${15 + ((i * 89) % 55)}%`,
+                    backgroundColor: isGlow ? "oklch(0.66 0.2 38)" : "oklch(0.97 0.008 250)",
                     opacity,
                     boxShadow: isGlow
                       ? `0 0 ${size * 4}px ${size}px oklch(0.66 0.2 38 / 0.35)`
@@ -143,9 +141,9 @@ function Index() {
                 <span className="mt-2 block text-primary">Break Through It</span>
               </h1>
               <p className="max-w-xl text-lg font-medium text-ink-foreground/70">
-                DevFlow Media is the revenue partner for IT companies ready to
-                create demand instead of waiting for it. We build outbound systems
-                that drive predictable enterprise growth.
+                DevFlow Media is the revenue partner for IT companies ready to create demand instead
+                of waiting for it. We build outbound systems that drive predictable enterprise
+                growth.
               </p>
               <div className="flex flex-wrap items-center gap-6 pt-2">
                 <a
@@ -157,7 +155,10 @@ function Index() {
                   BOOK A CALL
                 </a>
                 <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  <span
+                    className="material-symbols-outlined text-primary"
+                    style={{ fontVariationSettings: "'FILL' 1" }}
+                  >
                     verified
                   </span>
                   <span className="text-xs font-semibold uppercase tracking-widest">
@@ -189,11 +190,10 @@ function Index() {
             </h2>
             <div className="mx-auto h-1 w-20 bg-primary" />
             <p className="text-lg leading-relaxed text-muted-foreground">
-              Most IT companies flatten out at 15-20 employees because their only
-              source of new business is "who they know." Referrals are great, but
-              they are reactive. To reach the next level, you need a proactive
-              system that generates conversations with your ideal clients—every
-              single day.
+              Most IT companies flatten out at 15-20 employees because their only source of new
+              business is "who they know." Referrals are great, but they are reactive. To reach the
+              next level, you need a proactive system that generates conversations with your ideal
+              clients—every single day.
             </p>
           </div>
         </section>
@@ -211,8 +211,8 @@ function Index() {
                 </h2>
               </div>
               <p className="max-w-sm text-sm text-muted-foreground">
-                They treat outbound as a technical engineering process, not a
-                "numbers game" of spamming inboxes.
+                They treat outbound as a technical engineering process, not a "numbers game" of
+                spamming inboxes.
               </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -233,7 +233,10 @@ function Index() {
                   desc: "Your pipeline becomes a predictable asset, not a rollercoaster. We optimize every week based on hard data.",
                 },
               ].map((c) => (
-                <div key={c.title} className="card-hover rounded-lg border border-border bg-card p-8">
+                <div
+                  key={c.title}
+                  className="card-hover rounded-lg border border-border bg-card p-8"
+                >
                   <span className="material-symbols-outlined mb-4 text-4xl text-primary">
                     {c.icon}
                   </span>
@@ -294,7 +297,6 @@ function Index() {
           </div>
         </section>
 
-
         {/* Case Studies */}
         <section className="bg-background py-20" id="case-studies">
           <div className="container-max reveal">
@@ -346,8 +348,8 @@ function Index() {
               Growth shouldn't depend on luck Build your engine today
             </h2>
             <p className="text-lg font-medium text-ink-foreground/70">
-              Join the IT leaders who have stopped waiting for the phone to ring
-              and started making it happen.
+              Join the IT leaders who have stopped waiting for the phone to ring and started making
+              it happen.
             </p>
             <div className="flex flex-col justify-center gap-4 pt-2 md:flex-row">
               <a

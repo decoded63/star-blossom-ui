@@ -98,19 +98,12 @@ const stages: Stage[] = [
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-function ExpandedPanel({
-  stage,
-  onClose,
-}: {
-  stage: Stage;
-  onClose: () => void;
-}) {
+function ExpandedPanel({ stage, onClose }: { stage: Stage; onClose: () => void }) {
   return (
     <motion.div
       className="fixed inset-0 z-[9999] overflow-y-auto"
       style={{
-        background:
-          "radial-gradient(circle at center, rgba(20,35,80,0.97), rgba(4,10,24,0.99))",
+        background: "radial-gradient(circle at center, rgba(20,35,80,0.97), rgba(4,10,24,0.99))",
         backdropFilter: "blur(20px)",
         pointerEvents: "none",
         willChange: "opacity",
@@ -125,8 +118,7 @@ function ExpandedPanel({
         layoutId={`node-${stage.n}`}
         className="absolute inset-0"
         style={{
-          background:
-            "radial-gradient(circle at 30% 10%, rgba(255,90,31,0.10), transparent 55%)",
+          background: "radial-gradient(circle at 30% 10%, rgba(255,90,31,0.10), transparent 55%)",
           willChange: "transform",
         }}
         transition={{ duration: 1.0, ease: EASE }}
@@ -171,10 +163,7 @@ function ExpandedPanel({
           >
             {stage.title}
           </h3>
-          <p
-            className="mt-5 font-semibold text-primary"
-            style={{ fontSize: "24px" }}
-          >
+          <p className="mt-5 font-semibold text-primary" style={{ fontSize: "24px" }}>
             {stage.subheading}
           </p>
           <p
@@ -193,10 +182,7 @@ function ExpandedPanel({
           </h4>
           <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
             {stage.bullets.map((b) => (
-              <li
-                key={b}
-                className="flex items-center gap-3 text-base text-white/85"
-              >
+              <li key={b} className="flex items-center gap-3 text-base text-white/85">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/15 text-xs text-primary">
                   ✓
                 </span>
@@ -240,20 +226,15 @@ export function ProcessSection() {
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
             The Operating System
           </span>
-          <h2 className="mt-3 text-3xl font-bold md:text-5xl">
-            How the Process Works
-          </h2>
+          <h2 className="mt-3 text-3xl font-bold md:text-5xl">How the Process Works</h2>
           <p className="mt-4 text-muted-foreground">
-            Four control nodes. Hover any one to expand a stage of DevFlow
-            Media&apos;s outbound operating system into a full strategic view.
+            Four control nodes. Hover any one to expand a stage of DevFlow Media&apos;s outbound
+            operating system into a full strategic view.
           </p>
         </div>
 
         {/* tiny square control nodes */}
-        <div
-          className="flex items-center justify-center"
-          style={{ gap: "20px" }}
-        >
+        <div className="flex items-center justify-center" style={{ gap: "20px" }}>
           {stages.map((stage, i) => (
             <motion.button
               key={stage.n}
@@ -276,8 +257,7 @@ export function ProcessSection() {
               }}
               whileHover={{
                 scale: 1.06,
-                boxShadow:
-                  "0 0 0 1px rgba(255,90,31,0.25), 0 10px 40px rgba(255,90,31,0.12)",
+                boxShadow: "0 0 0 1px rgba(255,90,31,0.25), 0 10px 40px rgba(255,90,31,0.12)",
               }}
               transition={{ duration: 1.0, ease: EASE }}
             >
