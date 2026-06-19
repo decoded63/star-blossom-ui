@@ -78,17 +78,37 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "DFM" },
-      { name: "description", content: "Creative Canvas is a web application that showcases client success stories and outlines a strategic growth process." },
+      {
+        name: "description",
+        content:
+          "Creative Canvas is a web application that showcases client success stories and outlines a strategic growth process.",
+      },
       { name: "author", content: "Lovable" },
       { property: "og:title", content: "DFM" },
-      { property: "og:description", content: "Creative Canvas is a web application that showcases client success stories and outlines a strategic growth process." },
+      {
+        property: "og:description",
+        content:
+          "Creative Canvas is a web application that showcases client success stories and outlines a strategic growth process.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "DFM" },
-      { name: "twitter:description", content: "Creative Canvas is a web application that showcases client success stories and outlines a strategic growth process." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/oZ1DUjjcJ1SQ1wYClY90hRcLTGD3/social-images/social-1781642052477-DFM_LOGO_2.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/oZ1DUjjcJ1SQ1wYClY90hRcLTGD3/social-images/social-1781642052477-DFM_LOGO_2.webp" },
+      {
+        name: "twitter:description",
+        content:
+          "Creative Canvas is a web application that showcases client success stories and outlines a strategic growth process.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/oZ1DUjjcJ1SQ1wYClY90hRcLTGD3/social-images/social-1781642052477-DFM_LOGO_2.webp",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/oZ1DUjjcJ1SQ1wYClY90hRcLTGD3/social-images/social-1781642052477-DFM_LOGO_2.webp",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

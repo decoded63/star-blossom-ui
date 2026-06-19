@@ -14,7 +14,7 @@ export function VideoSection() {
           io.disconnect();
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.25 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -42,7 +42,10 @@ export function VideoSection() {
           }}
         >
           <div className="rounded-[20px] border border-white/[0.08] bg-white/[0.03] p-2.5 shadow-2xl backdrop-blur-sm">
-            <div className="relative overflow-hidden rounded-[14px]" style={{ paddingTop: "177.78%" }}>
+            <div
+              className="relative overflow-hidden rounded-[14px]"
+              style={{ paddingTop: "177.78%" }}
+            >
               <iframe
                 title="DevFlow Media — Growth Engine"
                 src="https://player.vimeo.com/video/1201225764?title=0&byline=0&portrait=0"
